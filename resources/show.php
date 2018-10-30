@@ -15,30 +15,22 @@
 <section class="books">
     <div class="container books__container">
 
-        <h1 class="books__title">Список книг</h1>
+        <h1 class="books__title" style="margin-bottom: 40px;"><?php echo $book['name'] ?></h1>
 
-        <table class="table books__table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Название</th>
-                <th scope="col">Автор</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
+        <pre style="max-width: 100%; white-space: pre-line;">
+            <?php echo $book['content'] ?>
+        </pre>
 
-            <?php foreach ($books as $index => $book) { ?>
-                <tr>
-                    <th scope="row"><?php echo ($index + 1) ?></th>
-                    <td><a href="/book?id=<?php echo $book['book_id'] ?>"><?php echo $book['name'] ?></a></td>
-                    <td><?php echo $book['author_name'] ?></td>
-                </tr>
-            <?php } ?>
-
-            </tbody>
-        </table>
-
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item <?php echo $book['is_first'] ? 'disabled' : ''?>">
+                    <a class="page-link" href="/book?id=<?php echo $book['book_id']?>&page=<?php echo $book['page'] > 1 ? $book['page'] - 1 : 1?>">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link <?php echo $book['is_last'] ? 'disabled' : ''?>" href="/book?id=<?php echo $book['book_id']?>&page=<?php echo $book['is_last'] ? $book['page'] : $book['page'] + 1?>">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </section>
 

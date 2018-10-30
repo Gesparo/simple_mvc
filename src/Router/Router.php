@@ -56,7 +56,7 @@ class Router
 
     private function getRelativePath(): string
     {
-        return $_SERVER['REQUEST_URI'];
+        return explode('?', $_SERVER['REQUEST_URI'])[0];
     }
 
     private function searchRoute($relativePath)
