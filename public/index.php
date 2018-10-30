@@ -2,4 +2,5 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-echo 'hello world';
+$controller = new \App\Controllers\IndexController();
+$controller->index();
