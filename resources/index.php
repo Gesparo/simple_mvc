@@ -12,9 +12,37 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>Hello, world!</h1>
-</div>
+<section class="books">
+    <div class="container books__container">
+
+        <h1 class="books__title">Список книг</h1>
+
+        <table class="table books__table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название</th>
+                <th scope="col">Автор</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <?php foreach ($books as $index => $book) { ?>
+                <tr>
+                    <th scope="row"><?php echo ($index + 1) ?></th>
+                    <td><?php echo $book['name'] ?></td>
+                    <td><?php echo $book['author_name'] ?></td>
+                    <td></td>
+                </tr>
+            <?php } ?>
+
+            </tbody>
+        </table>
+
+    </div>
+</section>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

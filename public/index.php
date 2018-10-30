@@ -2,5 +2,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$controller = new \App\Controllers\IndexController();
-$controller->index();
+$router = new \App\Router\Router();
+
+$router->register('/', 'IndexController', 'index');
+
+$router->resolve();

@@ -9,14 +9,25 @@
 namespace App\Controllers;
 
 
+use App\Models\BooksModel;
 use App\View\View;
+use PDO;
 
 class IndexController extends Controller
 {
+    /**
+     * Show index page
+     *
+     * @throws \Exception
+     */
     public function index(): void
     {
-        $view = new View();
+        $connection = new PDO('mysql:host=localhost;dbname=simple_mvc', 'root', '');
 
-        $view->render('index');
+        $model = new BooksModel($connection);
+        $books = $model->get();
+
+        $view = new View();
+        $view->render('index', compact('books'));
     }
 }
