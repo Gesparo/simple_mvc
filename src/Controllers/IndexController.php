@@ -9,9 +9,9 @@
 namespace App\Controllers;
 
 
+use App\Database\Container;
 use App\Models\BooksModel;
 use App\View\View;
-use PDO;
 
 class IndexController extends Controller
 {
@@ -22,7 +22,7 @@ class IndexController extends Controller
      */
     public function index(): void
     {
-        $connection = new PDO('mysql:host=localhost;dbname=simple_mvc', 'root', '');
+        $connection = Container::get();
 
         $model = new BooksModel($connection);
         $books = $model->get();

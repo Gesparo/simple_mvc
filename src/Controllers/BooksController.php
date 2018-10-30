@@ -8,9 +8,9 @@
 
 namespace App\Controllers;
 
+use App\Database\Container;
 use App\Models\SingleBookModel;
 use App\View\View;
-use PDO;
 
 class BooksController
 {
@@ -24,7 +24,7 @@ class BooksController
 
         $page = (int) $_GET['page'] > 0 ? (int) $_GET['page'] : 1;
 
-        $connection = new PDO('mysql:host=localhost;dbname=simple_mvc', 'root', '');
+        $connection = Container::get();
 
         $model = new SingleBookModel($connection, $bookId, $page);
         $book = $model->get();
